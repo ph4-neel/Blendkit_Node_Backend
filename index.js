@@ -15,7 +15,7 @@ app.get('/',function (req,res){
 
 app.get('/Register',StudentCrtl.StudentRegister)
 
-User.sync({ force: true });
+User.sync({ force: false });
 
 app.listen(3000,() =>{
     console.log("App is running on : https://localhost:3000/");
