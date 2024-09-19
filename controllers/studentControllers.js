@@ -1,4 +1,6 @@
 var Student = require('../models/student_model')
+const {v4 : uuid4} = require("uuid")
+const {setUser} = require('../service/auth')
 const StudentRegister = async (req, res) => {
 
     const Neel = Student.build({
@@ -25,6 +27,9 @@ const studentLogin = async (req, res) => {
     if (data === null) {
         res.status(404);
     } else {
+        const sessionId = uuid4();
+        setUser(sessionId,data);
+        res.cookie("uid",sessionId);
         res.status(200).json({data:data});
     }
 }
