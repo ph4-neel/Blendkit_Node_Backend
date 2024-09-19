@@ -1,13 +1,13 @@
 {
-  "name": "blendkit_backend_node",
+  "name": "blendkit",
   "version": "1.0.0",
-  "description": "Blendkit Backendend initial codebase",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start":"index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Indranil Bakshi",
+  "author": "indranil Bakshi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.3",
@@ -15,9 +15,9 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
+    "express-session": "^1.18.0",
     "mysql": "^2.18.1",
-    "mysql2": "^3.11.2",
-    "nodemon": "^3.1.4",
-    "sequelize": "^6.37.3"
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.6"
   }
 }

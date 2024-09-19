@@ -1,23 +1,22 @@
-const express = require("express");
-var bodyParser = require("body-parser");
-const Student = require("./models/user_model");
-require('./models')
+const express = require('express');
+var bodyParser = require('body-parser');
+const Student = require('./models/student_model.js')
+require('./models/config.js')
+var StudentCrtl = require('./controllers/studentControllers')
 const app = express();
 
-
-app.use(bodyParser.json());
-
-Student.sync({force : true});
+app.use(bodyParser.json())
 
 
-//initialize API
-app.get('/',function(req,res){
 
-    res.send("Working")
+app.get('/',function (req,res){
+    res.send("Home Page");
 })
 
-//listening port number
-app.listen(300,()=>{
+app.get('/Register',StudentCrtl.StudentRegister)
 
-    console.log("listening on port: 3000")
-});
+User.sync({ force: true });
+
+app.listen(3000,() =>{
+    console.log("App is running on : https://localhost:3000/");
+})
