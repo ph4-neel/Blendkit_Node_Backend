@@ -1,21 +1,24 @@
 const express = require('express');
 var bodyParser = require('body-parser');
-const Student = require('./models/student_model.js')
+var UserCrtl = require('./controllers/UserController.js')
+var cookieParser = require('cookie-parser')
+const {restrictToLoggedIn} = require('./middleware/auth.js');
 require('./models/config.js')
-var StudentCrtl = require('./controllers/studentControllers')
+
+
 const app = express();
-
 app.use(bodyParser.json())
-
+app.use(cookieParser())
 
 
 app.get('/',function (req,res){
     res.send("Home Page");
 })
 
-app.get('/Register',StudentCrtl.StudentRegister)
 
-User.sync({ force: false });
+app.get('/register',UserCrtl.UserRegister);
+app.post('/login',UserCrtl.UserLogin);
+app.get('/dashboard',restrictToLoggedIn,UserCrtl.Dashboard);
 
 app.listen(3000,() =>{
     console.log("App is running on : https://localhost:3000/");
